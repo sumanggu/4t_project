@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯Quiz Platform🎯</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 80px;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+            color: #666;
+        }
+        a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #2a2888;
+            color: white;
+            font-size: 20px;
+            border-radius: 10px;
+            padding: 10px 20px;
+        }
+        a:hover {
+            background-color: #52656d;
+        }
+        .center-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        img {
+            max-width: 200px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>✏️Welcome to the Chunjae Quiz✏️</h1>
+    <p>문제를 풀고 맞춤형 강의를 추천받아보세요!</p>
+    <div class="center-image">
+        <img src="{% static 'images/4t.png' %}" alt="Quiz Image" style="display: block;">
+    </div>
+    <a href="{% url 'knowledge_form' %}" class="btn btn-primary">Go!</a>
+
+</body>
+</html>

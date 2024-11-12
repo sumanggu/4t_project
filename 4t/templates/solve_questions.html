@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✏️문제 풀이✏️</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        .left-section {
+            text-align: center;
+        }
+        .left-section h2 {
+            margin-bottom: 10px;
+        }
+        .left-section img {
+            max-width: 200px;
+            margin-top: 10px;
+        }
+        .form-container {
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            font-size: 18px;
+        }
+        .question-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .question-item {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .question-item label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .question-item input {
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #2a2888;
+            color: white;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #52656d;
+        }
+        h3 {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h3>{{in_se_1}}학년 {{in_se_2}}학기의</h3>
+            <h3>{{in_skill_l}} - {{in_skill_s}} 단원</h3>
+            <h3>문제를 풀어보세요!</h3>
+            <img src="{% static 'images/solve.png' %}" alt="Quiz Image">
+        </div>
+        <div class="form-container">
+            <form method="post" action="{% url 'submit_answers' %}">
+                {% csrf_token %}
+                <input type="hidden" name="student_id" value="{{ student_id }}">
+                <input type="hidden" name="knowledge_unit" value="{{ knowledge_unit }}">
+                <div class="question-list">
+                    {% for question in questions %}
+                        <div class="question-item">
+                            <label>{{ question }}</label>
+                            <input type="text" name="answer_{{ forloop.counter }}" placeholder="Your answer">
+                        </div>
+                    {% endfor %}
+                </div>
+                <button type="submit">제출</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

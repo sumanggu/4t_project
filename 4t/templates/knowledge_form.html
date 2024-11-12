@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✍️아이디&단원 입력✍️</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 55vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .form-container {
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        button {
+            margin-top: 10px;
+            padding: 7px 18px;
+            font-size: 16px;
+            background-color: #2a2888;
+            color: white;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #52656d;
+        }
+        img {
+            max-width: 200px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>학생 ID와 풀이하고 싶은 단원을 입력해보세요!</h2>
+    <div class="container">
+        <img src="{% static 'images/id.png' %}" alt="Quiz Image">
+        <div class="form-container">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">확인</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

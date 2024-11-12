@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💯학습 결과💯</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            margin: 60px;
+            padding: 20px;
+            text-align: center;
+        }
+        h2 {
+            color: #2a2888;
+            margin: 10px 0;
+        }
+        h4 {
+            margin: 7px 0;
+        }
+        .result-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .result-image img {
+            max-width: 300px;
+        }
+        .result-content {
+            max-width: 450px;
+            text-align: left;
+            color: #333333;
+        }
+        .result-content p {
+            margin: 5px 0;
+            font-size: 16px;
+        }
+        .lecture-item {
+            font-size: 16px;
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 8px;
+            color: #000000;
+            position: relative;
+        }
+        .lecture-item::before {
+            content: "- ";
+            color: #2a2888;
+        }
+        a {
+            margin-top: 20px;
+            display: inline-block;
+            text-decoration: none;
+            background-color: #2a2888;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .result-text {
+            background-color: #aed6ee;
+        }
+        .highlighted-text {
+            background-color: #fffd9b;
+        }
+    </style>
+</head>
+<body>
+    <h2>📝{{ student_id }} 학생의 학습 결과📝</h2>
+    <h4><strong>풀이한 단원:</strong> <span class="highlighted-text">{{in_se_1}}학년 {{in_se_2}}학기 - {{in_skill_lnm}} - {{in_skill_snm}} (단원 코드: {{ knowledge_unit }})</span></h4>
+    <h4>( 현재 풀이한 10문제에 대한 점수: {{score}}점 & 지금까지 문제 풀이한 이력(해당 단원)에 대한 점수: {{sk_score}}점 )</h4>
+    <h4>( 다음에 해당 단원을 풀이했을 시, 정답일 확률: {{gkt_per}}% )</h4>
+    <h4>풀이 결과, <span class="result-text">{{result}}</span> 대상입니다. {{ment}}</h4>
+    <h4><strong>공부할 단원:</strong> <span class="highlighted-text">{{out_se_1}}학년 {{out_se_2}}학기 - {{out_skill_lnm}} - {{out_skill_snm}}</span></h4>
+    
+    <div class="result-container">
+        <div class="result-image">
+            <img src="{% static 'images/lec.png' %}" alt="Lecture Image">
+        </div>
+        <div class="result-content">
+            <h3 style="text-align: center;">추천 강의 목록</h3>
+            {% for item in lec %}
+                <div class="lecture-item">{{ item }}</div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <a href="{% url 'home' %}">처음 화면으로</a>
+</body>
+</html>
