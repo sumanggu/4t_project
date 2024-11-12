@@ -35,8 +35,9 @@
     - 데이터 전처리 및 모듈화<br>
 
 #### AWS 인프라 구성
-![image.png](attachment:image.png)
+![스크린샷 2024-11-12 213507](https://github.com/user-attachments/assets/f5b8e0db-cb3a-4842-b131-bd250058e218)
 
 #### 서비스 웹 시연 영상
 https://youtu.be/HkiXY96wNwA
-![image-2.png](attachment:image-2.png)
+![image (15)](https://github.com/user-attachments/assets/a30603f7-057b-494e-bddc-41c3f506b6c7)
+
